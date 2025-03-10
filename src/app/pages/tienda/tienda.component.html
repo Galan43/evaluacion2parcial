@@ -1,0 +1,51 @@
+<div class="container mt-5">
+    <h1 class="text-center text-info fw-bold">💻 Tienda de Tecnología</h1>
+    <div class="card bg-light shadow p-4 mt-4">
+        <h4 class="text-center text-dark">🛍️ Agregar Producto</h4>
+        <form>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="form-label fw-bold text-dark">Descripción</label>
+                    <input type="text" class="form-control border-primary" [(ngModel)]="producto.descripcion" name="descripcion" />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold text-dark">Precio</label>
+                    <input type="number" class="form-control border-primary" [(ngModel)]="producto.precio" name="precio" />
+                </div>
+            </div>
+            <div class="d-flex justify-content-around mt-4">
+                <button type="button" class="btn btn-outline-primary px-4" (click)="insertarProducto()">➕ Insertar</button>
+                <button type="button" class="btn btn-outline-warning px-4" (click)="updateProducto()">✏️ Actualizar</button>
+                <button type="button" class="btn btn-outline-danger px-4" (click)="deleteProducto()">🗑️ Eliminar</button>
+            </div>
+        </form>
+    </div>
+
+    <hr class="my-5 border-info" />
+
+    <h4 class="text-center text-dark">📋 Productos Disponibles</h4>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover text-center border">
+            <thead class="bg-info table-dark">
+                <tr>
+                    <th>nombre</th>
+                    <th>📄 Descripción</th>
+                    <th>💰 Precio</th>
+                    <th>✅ Seleccionar</th>
+                </tr>
+            </thead>
+            <tbody>
+            @for(producto of productos; track producto.id){
+                <tr>
+                    <td class="fw-bold text-secondary">{{ producto.nombre}}</td>
+                    <td class="fw-bold text-secondary">{{ producto.descripcion }}</td>
+                    <td class="fw-bold text-success">${{ producto.precio }}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-outline-success" (click)="selectProducto(producto)">✔ Seleccionar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

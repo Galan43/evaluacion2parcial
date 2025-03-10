@@ -1,0 +1,47 @@
+<div class="container mt-5">
+    <h1 class="text-center text-primary">🛒 Tienda de productos</h1>
+    <div class="card shadow-lg p-4 mt-4">
+        <h4 class="text-center text-secondary">📋 Registro de Producto</h4>
+        <form>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Descripción</label>
+                    <input type="text" class="form-control" [(ngModel)]="tiendaProducto.descripcion" name="descripcion" />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Precio</label>
+                    <input type="number" class="form-control" [(ngModel)]="tiendaProducto.precio" name="precio" />
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-4">
+                <button type="button" class="btn btn-primary mx-2 px-4" (click)="insertarTiendaProducto()">➕ Insertar</button>
+                <button type="button" class="btn btn-warning mx-2 px-4" (click)="updateTiendaProducto()">✏️ Actualizar</button>
+                <button type="button" class="btn btn-danger mx-2 px-4" (click)="deleteTiendaProducto()">🗑️ Eliminar</button>
+            </div>
+        </form>
+    </div>
+
+    <hr class="my-5" />
+
+    <h4 class="text-center text-secondary">📦 Listado de Productos</h4>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>📄 Descripción</th>
+                    <th>💲 Precio</th>
+                    <th>🎯 Seleccionar</th>
+                </tr>
+            </thead>
+            <tbody>
+            @for(tiendaProducto of tiendaProductos; track tiendaProducto.id){
+            <tr>
+                <td>{{ tiendaProducto.descripcion }}</td>
+                <td>${{ tiendaProducto.precio }}</td>
+                <td>
+                <button type="button" class="btn btn-success btn-sm" (click)="selectTiendaProducto(tiendaProducto)">✅ Seleccionar</button>                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
