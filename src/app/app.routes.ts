@@ -21,9 +21,5 @@ export const routes: Routes = [
         path:'acercade',
         component: AcercadeComponent
     },
-    {
-        path: '**',
-        redirectTo: 'home'
-    }
-
+    { path: '', redirectTo: '/home', pathMatch: 'full' } 
 ];
